@@ -27,30 +27,30 @@ public:
         if (top == -1) {
             return ' ';
         }
-        return arr[top]; }
-
+        return arr[top];
+    }
 
     bool isValid(string s) {
-    for(int i=0;i<s.length();i++){
-        if(s[i]=='(' || s[i]=='[' || s[i]=='{'){
-            push(s[i]);
-        }else{
-            if(top>=0){
-            if(peek()==s[i]){
-                pop();
-            }else{
-                return false;
-            }
-            }else if(top==-1){
-              return false;  
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == '(' || s[i] == '[' || s[i] == '{') {
+                push(s[i]);
+            } else {
+                if (top >= 0) {
+                    if (peek() == s[i]) {
+                        pop();
+                    } else {
+                        return false;
+                    }
+                } else if (top == -1) {
+                    return false;
+                }
             }
         }
-    }
-    if(top==-1){
-        return true;
-    }else{
-        return false;
-    }
-    return 0;
+        if (top == -1) {
+            return true;
+        } else {
+            return false;
+        }
+        return 0;
     }
 };
